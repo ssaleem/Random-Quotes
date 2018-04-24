@@ -1,6 +1,5 @@
 $(function() {
-	const people = ["Douglas Adams",
-	 			  "Aristotle",
+	const people = ["Aristotle",
 	 			  "Emily Brontë",
 	 			  "Charles Darwin",
 	 			  "Charles Dickens",
@@ -21,12 +20,12 @@ $(function() {
 	 			  "William Shakespeare",
 	 			  "George Bernard Shaw",
 	 			  "Percy Bysshe Shelley",
-	 			  "Starhawk",
 	 			  "Leo Tolstoy",
 	 			  "Anonymous"];
 	const main = $('main');
 	const quote = $('#quote');
 	const author = $('.blockquote-footer');
+  const quoteBlock = $('.blockquote');
 	const tweet = $('#tweet');
 	const max = people.length;
 	let quoteText;
@@ -43,13 +42,13 @@ $( window ).load(function() {
         // Get quote
         WikiquoteApi.getRandomQuote(authorName,
           function(newQuote) {
-          	quote.hide();
+          	quoteBlock.hide();  //use hide() and fadeIn() for text animation
           	quote.html(newQuote.quote);
           	console.log(quote.text());
           	quoteText = quote.text();
           	quote.text(quoteText);
-          	quote.show();
           	author.text(newQuote.titles);
+            quoteBlock.fadeIn(1800);
           },
           function(msg){
           	console.log(msg);
@@ -81,13 +80,13 @@ main.on( "click", "button", function() {
         // Get quote
         WikiquoteApi.getRandomQuote(authorName,
           function(newQuote) {
-          	quote.hide();
+          	quoteBlock.hide();
           	quote.html(newQuote.quote);
           	console.log(quote.text());
           	quoteText = quote.text();
           	quote.text(quoteText);
-          	quote.show();
           	author.text(newQuote.titles);
+            quoteBlock.fadeIn(1800);
           },
           function(msg){
           	console.log(msg);
@@ -108,5 +107,5 @@ tweet.click(function(){
 
 });
 function getRandomIndex(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+  return Math.floor(Math.random() * max);
 }
