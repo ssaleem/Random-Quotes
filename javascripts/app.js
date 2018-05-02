@@ -28,7 +28,7 @@ $(function() {
   const quoteBlock = $('.blockquote');
 	const tweet = $('#tweet');
   const authorNavButton = $('#author-nav-button');
-  const authorNavMenu = $('#author-nav-menu');
+  const authorNavMenu = $('.side-nav');
   const authorNavClose = $('.close-author-nav-menu');
 	const max = people.length;
 	let quoteText;
@@ -106,7 +106,6 @@ main.on( "click", "button", function() {
 authorNavMenu.on( "click", "a", function() {
 
   authorNavMenu.removeClass("nav-open");
-  authorNavMenu.addClass("nav-hide");
 
   if(!$(this).hasClass('close-author-nav-menu')) { //fix the issue, it is not working
     authorName = $(this).text();
@@ -146,13 +145,11 @@ tweet.click(function(){
 });
 
 authorNavButton.click(function(){
-  authorNavMenu.removeClass("nav-hide");
   authorNavMenu.addClass("nav-open");
 });
 
 authorNavClose.click(function(){
   authorNavMenu.removeClass("nav-open");
-  authorNavMenu.addClass("nav-hide");
 });
 
 });

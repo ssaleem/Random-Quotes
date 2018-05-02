@@ -51,6 +51,8 @@ body {
   background-color: #fff;
   opacity: 0.95;
   overflow-x: hidden;
+  -webkit-transform: translate(-300px,0);
+  transform: translate(-300px,0);
 }
 .side-nav>a{
   display: block;
@@ -62,10 +64,9 @@ body {
   font-weight: bold;
   text-decoration-line: none;
 }
-.nav-hide {
-  transform: translate(-300px,0);
-}
+
 .nav-open {
+   -webkit-transform: translate(0,0);
   transform: translate(0,0);
 }
 
