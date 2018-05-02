@@ -1,2 +1,2 @@
 # Random Quotes Machine
-This project gives a random quote extracted from [wikiquote.org](https://www.wikiquote.org/) using [this API](https://github.com/natetyler/wikiquotes-api). A specific author can also be selected. The page uses Bootstrap4. Project demo can be found [here](http://htmlpreview.github.io/?https://github.com/ssaleem/Random-Quotes/blob/master/index.html).
+This project gives a random quote extracted from [wikiquote.org](https://www.wikiquote.org/) using [this API](https://github.com/natetyler/wikiquotes-api). A specific author can also be selected. The page uses Bootstrap4. Project demo can be found [here](http://htmlpreview.github.io/?https://github.com/ssaleem/Random-Quotes/blob/responsive/index.html).
