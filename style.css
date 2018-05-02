@@ -1,4 +1,4 @@
-/** {
+/* * {
   border-style: solid;
   border-color: red;
 }*/
@@ -8,13 +8,9 @@ html {
 }
 body {
   margin-bottom: 40px; /* Margin bottom by footer height */
-  /*background-color: #713C77;*/
-/*  background: rgb(189,237,183);
-  background: radial-gradient(circle, rgba(189,237,183,1) 0%, rgba(148,189,233,1) 100%);
-*/
-background: rgb(71,126,64);
-background: radial-gradient(circle, rgba(71,126,64,1) 0%, rgba(148,189,233,1) 100%);
-color: white;
+  background: rgb(71,126,64);
+  background: radial-gradient(circle, rgba(71,126,64,1) 0%, rgba(148,189,233,1) 100%);
+  color: white;
 }
 
 /*sticky footer*/
@@ -44,15 +40,16 @@ color: white;
 }
 
 .side-nav {
-  width: 300px;
+  width: 220px;
   height: 100%;
   position: absolute;
-
-  transition: transform 0.3s ease;
+  -webkit-transition: transform 0.7s ease; /* For Safari 3.1 to 6.0 */
+  transition: transform 0.7s ease;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #fff;
+  opacity: 0.95;
   overflow-x: hidden;
 }
 .side-nav>a{
@@ -60,6 +57,10 @@ color: white;
   background-color: #fff;
   color: #333;
   padding: 0.75em;
+}
+.side-nav a:hover {
+  font-weight: bold;
+  text-decoration-line: none;
 }
 .nav-hide {
   transform: translate(-300px,0);
@@ -94,15 +95,18 @@ h1 {
   }
   header {
     background-color: #fff;
-    color: #333
+    color: #333;
+    font-size: 40px; /*set minimum font-size*/
 
   }
  #author-nav-button{
     width: 10%;
     text-align: left;
+    font-size: inherit;
   }
   header>h1{
-    width: 80%;
+    width: 90%;
+    font-size: inherit;
   }
 }
 
