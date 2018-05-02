@@ -11,6 +11,7 @@
     <script src="javascripts/jquery-2.0.2.min.js"></script>
 	<script src="javascripts/wikiquote-api.js"></script>
     <script src="javascripts/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 	<title>Random Quote Machine</title>
 </head>
@@ -18,15 +19,46 @@
 
     <!-- Begin page content -->
     <main role="main" class="container text-center">
-      <!-- <h1 class="mt-5 mb-3">Random Quotes</h1> -->
+      <header>
+	      <div id="author-nav-button">&#9776;</div>
+	      <h1>Random Quotes</h1>
+      </header>
+
+      <nav id="author-nav-menu" class="side-nav nav-hide select-person">
+      	  <a href="#" class="close-author-nav-menu">&times;</a>
+		  <a href="#">Aristotle</a>
+		  <a href="#">Emily Brontë</a>
+		  <a href="#">Charles Darwin</a>
+		  <a href="#">Charles Dickens</a>
+		  <a href="#">Albert Einstein</a>
+		  <a href="#">Richard Feynman</a>
+		  <a href="#">Mahatma Gandhi</a>
+		  <a href="#">Jesus</a>
+		  <a href="#">John Keats</a>
+		  <a href="#">Helen Keller</a>
+		  <a href="#">Martin Luther King, Jr.</a>
+		  <a href="#">Laozi</a>
+		  <a href="#">Timothy Leary</a>
+		  <a href="#">Muhammad</a>
+		  <a href="#">Thomas Paine</a>
+		  <a href="#">Eleanor Roosevelt</a>
+		  <a href="#">Bertrand Russell</a>
+		  <a href="#">William Saroyan</a>
+		  <a href="#">William Shakespeare</a>
+		  <a href="#">George Bernard Shaw</a>
+		  <a href="#">Percy Bysshe Shelley</a>
+		  <a href="#">Leo Tolstoy</a>
+		  <a href="#">Anonymous</a>
+	  </nav>
 
       <blockquote class="blockquote text-center">
   		<p class="mt-5 mb-0" id="quote" ></p>
   		<footer class="blockquote-footer mb-3"></footer>
 	  </blockquote>
 	  <button type = "button" class = "btn btn-lg btn-secondary mt-3 mb-4">New Quote</button>
-	  <a class="btn btn-lg btn-secondary mt-3 mb-4" href="#" role="button" id="tweet"><img src="https://use.fontawesome.com/releases/v5.0.9/svgs/brands/twitter.svg" id="g-img"> Tweet</a>
+	  <a class="btn btn-lg btn-secondary mt-3 mb-4" href="#" role="button" id="tweet"><img src="https://use.fontawesome.com/releases/v5.0.9/svgs/brands/twitter.svg" class="g-img"> Tweet</a>
       <br>
+    <div id="author-buttons" class="select-person">
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Aristotle</button>
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Emily Brontë</button>
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Charles Darwin</button>
@@ -52,11 +84,12 @@
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Percy Bysshe Shelley</button>
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Leo Tolstoy</button>
 	<button type = "button" class = "btn btn-sm btn-secondary mt-3">Anonymous</button>
+	</div>
 
 	</main>
     <footer class="footer">
       <div class="container text-center">
-         <a href="https://github.com/ssaleem"> <img src="https://use.fontawesome.com/releases/v5.0.9/svgs/brands/github.svg" id="g-img"> Sara S.</a>
+         <a href="https://github.com/ssaleem"> <img src="https://use.fontawesome.com/releases/v5.0.9/svgs/brands/github.svg" class="g-img"> Sara S.</a>
       </div>
     </footer>
   </body>

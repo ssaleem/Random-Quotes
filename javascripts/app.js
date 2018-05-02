@@ -27,6 +27,9 @@ $(function() {
 	const author = $('.blockquote-footer');
   const quoteBlock = $('.blockquote');
 	const tweet = $('#tweet');
+  const authorNavButton = $('#author-nav-button');
+  const authorNavMenu = $('#author-nav-menu');
+  const authorNavClose = $('.close-author-nav-menu');
 	const max = people.length;
 	let quoteText;
 	let authorName;
@@ -100,9 +103,56 @@ main.on( "click", "button", function() {
     );
   });
 
+authorNavMenu.on( "click", "a", function() {
+
+  authorNavMenu.removeClass("nav-open");
+  authorNavMenu.addClass("nav-hide");
+
+  if(!$(this).hasClass('close-author-nav-menu')) { //fix the issue, it is not working
+    authorName = $(this).text();
+
+  WikiquoteApi.openSearch(authorName,
+      function(results) {
+        console.log(results)
+
+        // Get quote
+        WikiquoteApi.getRandomQuote(authorName,
+          function(newQuote) {
+            quoteBlock.hide();
+            quote.html(newQuote.quote);
+            console.log(quote.text());
+            quoteText = quote.text();
+            quote.text(quoteText);
+            author.text(newQuote.titles);
+            quoteBlock.fadeIn(1800);
+          },
+          function(msg){
+            console.log(msg);
+            alert(msg);
+          }
+        );
+      },
+      function(msg) {
+        alert(msg);
+      }
+    );
+}
+
+  });
+
 tweet.click(function(){
 	let uri = "https://twitter.com/intent/tweet?text=" + "\"" + quoteText + "\"" + authorName;
 	tweet.attr("href", encodeURI(uri));
+});
+
+authorNavButton.click(function(){
+  authorNavMenu.removeClass("nav-hide");
+  authorNavMenu.addClass("nav-open");
+});
+
+authorNavClose.click(function(){
+  authorNavMenu.removeClass("nav-open");
+  authorNavMenu.addClass("nav-hide");
 });
 
 });
