@@ -1,7 +1,3 @@
-/* * {
-  border-style: solid;
-  border-color: red;
-}*/
 html {
   position: relative;
   min-height: 100%;
@@ -34,7 +30,7 @@ body {
 .blockquote-footer {
   color: #C5C6CBFF;
 }
-.g-img{
+.g-img {
 	height: 1.3em;
 	width: auto;
 }
@@ -54,7 +50,7 @@ body {
   -webkit-transform: translate(-300px,0);
   transform: translate(-300px,0);
 }
-.side-nav>a{
+.side-nav>a {
   display: block;
   background-color: #fff;
   color: #333;
@@ -82,7 +78,7 @@ h1 {
   font-family: 'Cabin Sketch', cursive;
   margin-bottom: 0;
 }
-#author-nav-button{
+#author-nav-button {
   font-size: 6vw;
 }
 
@@ -100,12 +96,12 @@ h1 {
     font-size: 40px; /*set minimum font-size*/
 
   }
- #author-nav-button{
+ #author-nav-button {
     width: 10%;
     text-align: left;
     font-size: inherit;
   }
-  header>h1{
+  header>h1 {
     width: 90%;
     font-size: inherit;
   }
@@ -114,9 +110,9 @@ h1 {
 @media screen and (min-width: 601px) {
   #author-nav-button {
     display: none;
-    width: 0%;
+    width: 0;
   }
-  header>h1{
+  header>h1 {
     width: 100%;
   }
 }
