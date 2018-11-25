@@ -1,13 +1,37 @@
-/*html {
-  position: relative;
-  min-height: 100%;
-}*/
 body {
-  margin-bottom: 40px; /* Margin bottom by footer height */
+  margin-bottom: 25px; /* Margin bottom by footer height */
   background: rgb(71,126,64);
   background: radial-gradient(circle, rgba(71,126,64,1) 0%, rgba(148,189,233,1) 100%);
   color: white;
 }
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 0.7vw;
+  padding: 10px;
+  font-size: calc(20px + 3vw);
+  background-color: #fff;
+  color: #333;
+}
+
+h1 {
+  font-size: calc(20px + 3vw);
+  font-family: 'Cabin Sketch', cursive;
+  margin-bottom: 0;
+  width: 90%;
+}
+
+#author-nav-button {
+  width: 10%;
+  text-align: left;
+  font-size: inherit;
+}
+
+#author-buttons {
+    display: none;
+  }
 
 /*sticky footer*/
 .footer {
@@ -15,32 +39,35 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 40px; /* Set the fixed height of the footer here */
-  line-height: 40px; /* Vertically center the text there */
+  height: 25px; /* Set the fixed height of the footer here */
+  line-height: 25px; /* Vertically center the text there */
   background-color: #f5f5f5;
+  color: #404141FF;
+  font-size: 11px;
 }
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
+.btn-secondary {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
-  border: .05rem solid #fff;
+  border: none;
+  margin: 0.2em;
+}
+
+.btn-secondary:hover {
+  background-color: #777;
+  color: #EDF3F3FF;
+  border: none;
 }
 
 .blockquote-footer {
   color: #C5C6CBFF;
-}
-.g-img {
-	height: 1.3em;
-	width: auto;
 }
 
 .side-nav {
   width: 220px;
   height: 100%;
   position: absolute;
-  -webkit-transition: transform 0.7s ease; /* For Safari 3.1 to 6.0 */
+  -webkit-transition: transform 0.7s ease;
   transition: transform 0.7s ease;
   z-index: 1;
   top: 0;
@@ -51,12 +78,13 @@ body {
   -webkit-transform: translate(-300px,0);
   transform: translate(-300px,0);
 }
+
 .side-nav>a {
   display: block;
-  background-color: #fff;
   color: #333;
   padding: 0.75em;
 }
+
 .side-nav a:hover {
   font-weight: bold;
   text-decoration-line: none;
@@ -67,53 +95,26 @@ body {
   transform: translate(0,0);
 }
 
-header {
-  display: flex;
-  align-items: center;
-  margin: 1vw;
-  border-radius: 0.7vw;
-  padding: 3vh 3vw;
-}
-h1 {
-  font-size: 7vw;
-  font-family: 'Cabin Sketch', cursive;
-  margin-bottom: 0;
-}
-#author-nav-button {
-  font-size: 6vw;
-}
-
 .close-author-nav-menu {
   text-align: right;
 }
 
-@media screen and (max-width: 600px) {
-  #author-buttons {
-    display: none;
-  }
-  header {
-    background-color: #fff;
-    color: #333;
-    font-size: 40px; /*set minimum font-size*/
-
-  }
- #author-nav-button {
-    width: 10%;
-    text-align: left;
-    font-size: inherit;
-  }
-  header>h1 {
-    width: 90%;
-    font-size: inherit;
-  }
-}
-
 @media screen and (min-width: 601px) {
+  #author-buttons {
+    display: block;
+  }
+
   #author-nav-button {
     display: none;
     width: 0;
   }
-  header>h1 {
+  header {
+    padding: 20px;
+    background-color: transparent;
+    color: #fff;
+  }
+  h1 {
+    font-size: calc(24px + 3vw);
     width: 100%;
   }
 }
