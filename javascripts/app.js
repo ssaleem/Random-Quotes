@@ -1,121 +1,101 @@
 $(function() {
-	const people = ["Aristotle",
-	 			  "Emily Brontë",
-	 			  "Charles Darwin",
-	 			  "Charles Dickens",
-	 			  "Albert Einstein",
-	 			  "Richard Feynman",
-	 			  "Mahatma Gandhi",
-	 			  "Jesus",
-	 			  "John Keats",
-	 			  "Helen Keller",
-	 			  "Martin Luther King, Jr.",
-	 			  "Laozi",
-	 			  "Timothy Leary",
-	 			  "Muhammad",
-	 			  "Thomas Paine",
-	 			  "Eleanor Roosevelt",
-	 			  "Bertrand Russell",
-	 			  "William Saroyan",
-	 			  "William Shakespeare",
-	 			  "George Bernard Shaw",
-	 			  "Percy Bysshe Shelley",
-	 			  "Leo Tolstoy",
-	 			  "Anonymous"];
-	const main = $('main');
-	const quote = $('#quote');
-	const author = $('.blockquote-footer');
+  const people = ["Aristotle",
+          "Emily Brontë",
+          "Charles Darwin",
+          "Charles Dickens",
+          "Albert Einstein",
+          "Richard Feynman",
+          "Mahatma Gandhi",
+          "Jesus",
+          "John Keats",
+          "Helen Keller",
+          "Martin Luther King, Jr.",
+          "Laozi",
+          "Timothy Leary",
+          "Muhammad",
+          "Thomas Paine",
+          "Eleanor Roosevelt",
+          "Bertrand Russell",
+          "William Saroyan",
+          "William Shakespeare",
+          "George Bernard Shaw",
+          "Percy Bysshe Shelley",
+          "Leo Tolstoy",
+          "Anonymous"];
+  const main = $('main');
+  const quote = $('#quote');
+  const author = $('.blockquote-footer');
   const quoteBlock = $('.blockquote');
-	const tweet = $('#tweet');
+  const tweet = $('#tweet');
   const authorNavButton = $('#author-nav-button');
   const authorNavMenu = $('.side-nav');
   const authorNavClose = $('.close-author-nav-menu');
-	const max = people.length;
-	let quoteText;
-	let authorName;
+  const authorButtons = $('#author-buttons');
+  const max = people.length;
+  let quoteText;
+  let authorName;
 
+  // Load quote
+  authorName = people[getRandomIndex(max)];
+  getQuote(authorName);
 
-$( window ).load(function() {
-	let peopleIndex = getRandomIndex(max);
-	authorName = people[peopleIndex];
-	WikiquoteApi.openSearch(authorName,
-      function(results) {
-      	console.log(results)
+  // Add author buttons
+  const buttonFragment = document.createDocumentFragment();
+  for(const person of people){
+    const newItem = document.createElement(`button`);
+    newItem.setAttribute('type', 'button');
+    newItem.setAttribute('class', 'btn btn-sm btn-secondary mt-3');
+    newItem.innerText = person;
+    buttonFragment.appendChild(newItem);
+  }
+  authorButtons.append(buttonFragment);
 
-        // Get quote
-        WikiquoteApi.getRandomQuote(authorName,
-          function(newQuote) {
-          	quoteBlock.hide();  //use hide() and fadeIn() for text animation
-          	quote.html(newQuote.quote);
-          	console.log(quote.text());
-          	quoteText = quote.text();
-          	quote.text(quoteText);
-          	author.text(newQuote.titles);
-            quoteBlock.fadeIn(1800);
-          },
-          function(msg){
-          	console.log(msg);
-            alert(msg);
-          }
-        );
-      },
-      function(msg) {
-        alert(msg);
-      }
-    );
-  // Run code
-});
+  // Load mobile nav menu entries
+  const navFragment = document.createDocumentFragment();
+  for(const person of people){
+    const newItem = document.createElement(`a`);
+    newItem.setAttribute('href', '#');
+    newItem.innerText = person;
+    navFragment.appendChild(newItem);
+  }
+  authorNavMenu.append(navFragment);
+
 // on button click update quote
-main.on( "click", "button", function() {
-	let buttonText = $(this).text();
-
-	if(buttonText == "New Quote"){
-		let peopleIndex = getRandomIndex(max);
-		authorName = people[peopleIndex];
-	}
-	else {
-		authorName = buttonText;
-	}
-	WikiquoteApi.openSearch(authorName,
-      function(results) {
-      	console.log(results)
-
-        // Get quote
-        WikiquoteApi.getRandomQuote(authorName,
-          function(newQuote) {
-          	quoteBlock.hide();
-          	quote.html(newQuote.quote);
-          	console.log(quote.text());
-          	quoteText = quote.text();
-          	quote.text(quoteText);
-          	author.text(newQuote.titles);
-            quoteBlock.fadeIn(1800);
-          },
-          function(msg){
-          	console.log(msg);
-            alert(msg);
-          }
-        );
-      },
-      function(msg) {
-        alert(msg);
-      }
-    );
+  main.on( "click", "button", function() {
+    let buttonText = $(this).text();
+    authorName = (buttonText === "New Quote") ? people[getRandomIndex(max)] : buttonText;
+    getQuote(authorName);
   });
 
-authorNavMenu.on( "click", "a", function() {
+  authorNavMenu.on( "click", "a", function() {
 
-  authorNavMenu.removeClass("nav-open");
+    authorNavMenu.removeClass("nav-open");
 
-  if(!$(this).hasClass('close-author-nav-menu')) { //fix the issue, it is not working
-    authorName = $(this).text();
+    if(!$(this).hasClass('close-author-nav-menu')) {
+      authorName = $(this).text();
+      getQuote(authorName);
+    }
+  });
 
-  WikiquoteApi.openSearch(authorName,
+  tweet.click(function(){
+    let uri = "https://twitter.com/intent/tweet?text=" + "\"" + quoteText + "\"" + authorName;
+    tweet.attr("href", encodeURI(uri));
+  });
+
+  authorNavButton.click(function(){
+    authorNavMenu.addClass("nav-open");
+  });
+
+  authorNavClose.click(function(){
+    authorNavMenu.removeClass("nav-open");
+  });
+
+  function getQuote(name){
+    WikiquoteApi.openSearch(name,
       function(results) {
         console.log(results)
-
         // Get quote
-        WikiquoteApi.getRandomQuote(authorName,
+        WikiquoteApi.getRandomQuote(name,
           function(newQuote) {
             quoteBlock.hide();
             quote.html(newQuote.quote);
@@ -135,22 +115,7 @@ authorNavMenu.on( "click", "a", function() {
         alert(msg);
       }
     );
-}
-
-  });
-
-tweet.click(function(){
-	let uri = "https://twitter.com/intent/tweet?text=" + "\"" + quoteText + "\"" + authorName;
-	tweet.attr("href", encodeURI(uri));
-});
-
-authorNavButton.click(function(){
-  authorNavMenu.addClass("nav-open");
-});
-
-authorNavClose.click(function(){
-  authorNavMenu.removeClass("nav-open");
-});
+  }
 
 });
 function getRandomIndex(max) {
