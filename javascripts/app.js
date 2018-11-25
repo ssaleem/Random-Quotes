@@ -97,16 +97,21 @@ $(function() {
         // Get quote
         WikiquoteApi.getRandomQuote(name,
           function(newQuote) {
-            quoteBlock.hide();
-            quote.html(newQuote.quote);
-            // console.log(quote.text());
-            quoteText = quote.text();
-            quote.text(quoteText);
-            author.text(newQuote.titles);
-            quoteBlock.fadeIn(1800);
+            // console.log(Object.keys(newQuote));
+            if(newQuote.quote.length > 2){
+              quoteBlock.hide();
+              quote.html(newQuote.quote);
+              // console.log(quote.text());
+              quoteText = quote.text();
+              quote.text(quoteText);
+              author.text(newQuote.titles);
+              quoteBlock.fadeIn(1800);
+            }
+            else {
+              getQuote(name);
+            }
           },
           function(msg){
-            console.log(msg);
             alert(msg);
           }
         );
