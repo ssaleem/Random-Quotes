@@ -44,7 +44,7 @@ $(function() {
   for(const person of people){
     const newItem = document.createElement(`button`);
     newItem.setAttribute('type', 'button');
-    newItem.setAttribute('class', 'btn btn-sm btn-secondary mt-3 mx-1');
+    newItem.setAttribute('class', 'btn btn-sm btn-secondary m-1');
     newItem.innerText = person;
     buttonFragment.appendChild(newItem);
   }
