@@ -44,7 +44,7 @@ $(function() {
   for(const person of people){
     const newItem = document.createElement(`button`);
     newItem.setAttribute('type', 'button');
-    newItem.setAttribute('class', 'btn btn-sm btn-secondary mt-3');
+    newItem.setAttribute('class', 'btn btn-sm btn-secondary mt-3 mx-1');
     newItem.innerText = person;
     buttonFragment.appendChild(newItem);
   }
@@ -93,13 +93,13 @@ $(function() {
   function getQuote(name){
     WikiquoteApi.openSearch(name,
       function(results) {
-        console.log(results)
+        // console.log(results)
         // Get quote
         WikiquoteApi.getRandomQuote(name,
           function(newQuote) {
             quoteBlock.hide();
             quote.html(newQuote.quote);
-            console.log(quote.text());
+            // console.log(quote.text());
             quoteText = quote.text();
             quote.text(quoteText);
             author.text(newQuote.titles);
